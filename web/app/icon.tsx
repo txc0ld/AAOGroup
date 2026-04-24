@@ -15,13 +15,15 @@ export default async function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 22,
-          fontWeight: 700,
-          fontFamily: "serif",
-          letterSpacing: "-0.04em",
+          fontFamily: "sans-serif",
+          fontSize: 18,
+          letterSpacing: "-0.06em",
+          lineHeight: 1,
         }}
       >
-        a
+        <span style={{ fontWeight: 200, opacity: 0.5 }}>[</span>
+        <span style={{ fontWeight: 800 }}>a</span>
+        <span style={{ fontWeight: 200, opacity: 0.5 }}>]</span>
       </div>
     ),
     { ...size }

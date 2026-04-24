@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { FOOTER_LEGAL, PRIMARY_NAV } from "@/lib/nav";
+import { Logo } from "@/components/logo";
 
 export function SiteFooter() {
   return (
@@ -13,17 +14,8 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-[var(--container-max)] px-6 pt-20 pb-10 lg:px-10 lg:pt-28">
         <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
-            <Link
-              href="/"
-              aria-label="AAO Group — home"
-              className="inline-flex items-baseline gap-[0.35rem]"
-            >
-              <span className="font-serif text-[1.5rem] leading-none tracking-[-0.02em] text-[var(--color-paper)]">
-                aao
-              </span>
-              <span className="font-serif text-[1.5rem] leading-none tracking-[-0.02em] text-[rgb(246_244_238_/_0.55)]">
-                group
-              </span>
+            <Link href="/" aria-label="AAO Group — home" className="inline-block">
+              <Logo variant="stacked" tone="paper" />
             </Link>
             <p className="mt-6 max-w-[34ch] text-[1.0625rem] leading-[1.55] text-[rgb(246_244_238_/_0.78)]">
               Secure AI operations for Australian businesses.

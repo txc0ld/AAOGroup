@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { PRIMARY_NAV } from "@/lib/nav";
+import { Logo } from "@/components/logo";
 
 function isActive(pathname: string | null, href: string) {
   if (!pathname) return false;
@@ -44,17 +45,8 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-[var(--container-max)] items-center justify-between px-6 md:h-20 lg:px-10">
-        <Link
-          href="/"
-          aria-label="AAO Group — home"
-          className="group inline-flex items-baseline gap-[0.35rem] text-[var(--color-ink)]"
-        >
-          <span className="font-serif text-[1.35rem] leading-none tracking-[-0.02em] md:text-[1.5rem]">
-            aao
-          </span>
-          <span className="font-serif text-[1.35rem] leading-none tracking-[-0.02em] text-[var(--color-muted)] md:text-[1.5rem]">
-            group
-          </span>
+        <Link href="/" aria-label="AAO Group — home" className="group inline-flex items-baseline">
+          <Logo variant="compact" tone="ink" />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
