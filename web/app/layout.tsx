@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   title: { default: "AAO Group — Secure AI operations for Australian businesses", template: "%s · AAO Group" },
   description: "We install controlled AI operators inside Australian businesses — with approval gates, logs, and data boundaries.",
   metadataBase: new URL("https://aaogroup.au"),
+  openGraph: {
+    type: "website",
+    locale: "en_AU",
+    url: "https://aaogroup.au",
+    siteName: "AAO Group",
+    title: "AAO Group — Secure AI operations for Australian businesses",
+    description: "We install controlled AI operators inside Australian businesses — with approval gates, logs, and data boundaries.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
