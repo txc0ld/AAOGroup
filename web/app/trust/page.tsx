@@ -388,7 +388,7 @@ export default function TrustPage() {
           <div className="flex flex-col">
             <p className={monoLabel}>ABN</p>
             <p className="mt-2 font-sans text-[0.9375rem] leading-[1.55] text-[var(--color-ink)]">
-              [placeholder — to be issued]
+              51 559 921 362
             </p>
           </div>
           <div className="flex flex-col">

@@ -98,7 +98,7 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={160} className="bg-[var(--color-paper)] p-8">
             <p className={reachLabelClass}>ABN</p>
-            <p className={reachValueClass}>[placeholder — to be issued]</p>
+            <p className={reachValueClass}>51 559 921 362</p>
           </Reveal>
         </div>
       </Section>

@@ -65,7 +65,7 @@ export function SiteFooter() {
               ))}
             </ul>
             <p className="mt-6 font-mono text-[0.75rem] tracking-[0.04em] text-[rgb(246_244_238_/_0.55)]">
-              ABN 00 000 000 000
+              ABN 51 559 921 362
             </p>
           </div>
         </div>
