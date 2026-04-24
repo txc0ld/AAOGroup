@@ -66,7 +66,7 @@ Smoke suite only — covers route rendering and console-error checks. Visual qua
 Copy `.env.example` to `.env.local`:
 
 ```
-NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/aaogroup/audit
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/aaogroup
 RESEND_API_KEY=
 PLAUSIBLE_DOMAIN=aaogroup.au
 ```

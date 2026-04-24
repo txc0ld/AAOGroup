@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const CALENDLY_SCRIPT_SRC =
   "https://assets.calendly.com/assets/external/widget.js";
 const DEFAULT_URL =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/aaogroup/audit";
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/aaogroup";
 
 type CalendlyEmbedProps = {
   url?: string;
