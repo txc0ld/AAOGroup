@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4, JetBrains_Mono } from "next/font/google";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -15,7 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className={`${inter.variable} ${serif.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
