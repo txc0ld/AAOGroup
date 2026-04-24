@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AAO Group — Marketing Site
 
-## Getting Started
+Production marketing site for **Australian AI Operations Group** at [aaogroup.au](https://aaogroup.au).
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16** (App Router) · TypeScript (strict) · Tailwind v4
+- **MDX** for editorial content (Insights, legal placeholders)
+- **Playwright** smoke tests (route rendering + console errors)
+- **Vercel** deploy target (Sydney region)
+
+## Project layout
+
+```
+web/
+├── app/                       # App Router routes
+│   ├── about/                 # Founder narrative + operating principles
+│   ├── contact/               # Calendly embed + enquiry server action
+│   ├── framework/             # Sovereign AI Operations Framework (5 layers)
+│   ├── insights/              # Insights index + dynamic [slug]
+│   ├── legal/                 # Privacy + Terms placeholders
+│   ├── pricing/               # Three-column pricing + FAQ
+│   ├── services/              # Audit / Pilot / Subscription
+│   ├── trust/                 # Trust & Security
+│   ├── use-cases/             # Index + 5 vertical detail pages
+│   ├── globals.css            # Base layer
+│   ├── tokens.css             # Locked design tokens
+│   ├── layout.tsx             # Root layout, fonts, metadata
+│   ├── opengraph-image.tsx    # Generated OG image
+│   ├── icon.tsx               # Generated favicon
+│   ├── not-found.tsx          # 404 page
+│   └── page.tsx               # Home
+├── components/                # All reusable components, grouped by domain
+├── content/insights/          # MDX posts
+├── lib/                       # cn, nav, use-cases, insights, email
+├── public/                    # Static assets
+└── __tests__/                 # Playwright smoke tests
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Develop
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open <http://localhost:3000>.
 
-## Learn More
+## Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+pnpm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Test
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dlx playwright test
+```
 
-## Deploy on Vercel
+Smoke suite only — covers route rendering and console-error checks. Visual quality is reviewed manually.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy `.env.example` to `.env.local`:
+
+```
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/aaogroup/audit
+RESEND_API_KEY=
+PLAUSIBLE_DOMAIN=aaogroup.au
+```
+
+The site runs without these set — absent integrations no-op gracefully:
+
+- **Calendly:** if `NEXT_PUBLIC_CALENDLY_URL` is unset, the embed uses the placeholder URL.
+- **Resend:** if `RESEND_API_KEY` is unset, enquiry form submissions log to the server console instead of sending email.
+- **Plausible:** not yet wired; reserved for future analytics.
+
+## Deploy
+
+Vercel project, region `syd1`. `main` deploys to production; preview deploys per PR.
+
+```bash
+vercel --prod
+```
+
+## Content
+
+Insights posts live in `content/insights/*.mdx`. Add a new post:
+
+1. Drop a `.mdx` file with frontmatter (`title`, `description`, `date`, `readingMinutes`).
+2. Index regenerates on next build.
+
+Legal pages (`app/legal/privacy/page.tsx`, `app/legal/terms/page.tsx`) are placeholder copy pending counsel review before public launch.
+
+## Design discipline
+
+Pure monochrome. Tokens locked in `app/tokens.css`. The accent token `--color-signal` (#B8704A) is reserved exclusively for status pills inside product screenshots — it is **not** decorative. Adding a new colour requires updating the design spec at `../docs/superpowers/specs/2026-04-25-aao-group-website-design.md` §2.2 first.
+
+The voice is editorial and plain-English. The following words are not permitted in marketing copy: *transform, unleash, revolutionary, AI-powered, leverage, passionate, robust, cutting-edge, seamless*.
+
+Spelling: en-AU.
+
+## Architecture context
+
+The site reflects the v1 architecture amended on 2026-04-25:
+
+```
+Integration → Workflow → Guarded LLM → Approval Queue → Audit
+```
+
+Models run via Amazon Bedrock (ap-southeast-2 / Sydney) or Azure (Australia East) where the chosen model is supported. NemoClaw / OpenShell are not part of v1 — they appear only as a sidebar callout on the Framework page.
+
+The approval queue is the product. Everything else supports it.
