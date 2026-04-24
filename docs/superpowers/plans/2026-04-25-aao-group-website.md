@@ -413,7 +413,7 @@ Invoke `frontend-design:frontend-design`:
 >    - "The owner is the bottleneck." — every escalation lands in one inbox at 9pm.
 > 3. What we install — three offer cards: Audit ($2,500–$7,500, 1–2 weeks), Pilot ($10,000–$30,000, 2–4 weeks), Subscription (from $5,000/mo). Each card → /services anchor.
 > 4. Use cases strip — five vertical cards (Trades, Mining services, Accounting, Legal admin, Property). Each card: vertical, one-line pain, link to detail page.
-> 5. Framework preview — single paragraph + a five-layer architecture diagram rendered in pure CSS (stacked horizontal bands labelled: Discovery / Governance / Agent runtime / Integration / Operator). Link to `/framework`.
+> 5. Framework preview — single paragraph + a five-layer architecture diagram rendered in pure CSS (stacked horizontal bands labelled in order: **Integration / Workflow / Guarded LLM / Approval Queue / Audit**). The Approval Queue band is visually emphasised (slightly taller, mono label "the wedge", inverted ink-on-paper while others are paper-on-ink) because the human approval queue is the product. Link to `/framework`.
 > 6. Governance band — `tone="ink"`. Three pillars (Approval gates / Logs / Data boundaries). Each with a one-line value prop and a number ("Every tool call logged", "Approval required before any outbound message", "Read-only by default").
 > 7. Pricing anchor — three-tier preview using `PricingTable` if it exists or a compact local variant. Link to `/pricing`.
 > 8. CTABand — defaults.
@@ -527,22 +527,28 @@ git commit -m "feat(pricing): build pricing page with table and faq"
 - Create: `web/components/framework/layer-diagram.tsx`
 - Create: `web/components/framework/layer-section.tsx`
 
-Spec reference: §4.3, PRD §8.
+Spec reference: §4.3 (post-amendment). PRD §8 is the legacy model — **use spec §4.3 not PRD §8** for layer names. The 2026-04-25 amendment locks the v1 architecture as: Integration → Workflow → Guarded LLM → Approval Queue → Audit, with NemoClaw/OpenShell as a future premium runtime.
 
 - [ ] **Step 1: Generate Framework via frontend-design**
 
 Invoke `frontend-design:frontend-design`:
 
-> Build `app/framework/page.tsx` — the methodology page. Spec §4.3 + PRD §8 (five layers). This is the moat. It must read like a serious methodology white paper, not a sales page.
+> Build `app/framework/page.tsx` — the methodology page. Spec §4.3. This is the moat. It must read like a serious methodology white paper, not a sales page.
 >
 > **Structure:**
-> - Page hero: eyebrow "Methodology", title "The Sovereign AI Operations Framework.", lede "Five layers that turn AI from a chat window into governed operational infrastructure."
-> - LayerDiagram: pure-CSS five-layer stacked diagram at the top, labelled left-to-right or top-to-bottom: Discovery → Governance → Agent runtime → Integration → Operator. Each layer is an ink band on paper (or vice-versa for visual rhythm) with mono labels.
-> - Five LayerSection components, one per layer, each with: layer number, layer name, what it does (2 sentences), what the client sees (2 sentences), why it matters (1 sentence). No bullet-point firehose.
-> - Closing band: "Why we built it this way." — three short paragraphs on governance, narrowness, and measurable outcomes.
+> - Page hero: eyebrow "Methodology", title "The Sovereign AI Operations Framework.", lede "Five layers that turn AI from a chat window into governed operational infrastructure. The approval queue is the product. Everything else supports it."
+> - LayerDiagram: pure-CSS five-layer stacked diagram at the top, labelled top-to-bottom in this exact order: **Integration → Workflow → Guarded LLM → Approval Queue → Audit**. Approval Queue band is visually emphasised: slightly taller than the others, inverted treatment (ink on paper while others are paper on ink, or vice-versa depending on the section's tone), mono small-caps label "the wedge" appended.
+> - Five LayerSection components in the same order, one per layer. Each: layer number (mono), layer name (display sans), what it does (2 sentences), what the client sees (2 sentences), why it matters (1 sentence). Layer content:
+>   1. **Integration** — OAuth / webhooks / polling into Gmail, Outlook, forms, CRM, Xero, Sheets. Normalised into a consistent event stream. Client sees: connections page, scope per integration, revoke button. Why it matters: least-privilege access by default.
+>   2. **Workflow** — Deterministic state machine plus narrow, scoped task agents (LangGraph). No open-ended autonomy. Client sees: each workflow has a defined trigger, defined stops, defined outputs. Why it matters: predictability is the precondition for trust.
+>   3. **Guarded LLM** — The model call sits inside guardrails, not behind them. Input rails validate before the model sees the request. Output rails check before any response leaves. Topical, dialog, and policy rails constrain behaviour throughout (NVIDIA NeMo Guardrails rail types). Models run via Amazon Bedrock (Sydney) or Azure (Australia East) where supported. Client sees: per-workflow model and region. Why it matters: data stays onshore, behaviour stays in scope.
+>   4. **Approval queue** — The wedge. Every customer-facing or system-changing action lands here for human approve / edit / reject. Client sees: a single inbox of decisions, each with diff and source context. Why it matters: this is the product.
+>   5. **Audit** — Every tool call, every approval decision, every rail trip is logged. Monthly client report rolls it up. Client sees: searchable activity log, monthly PDF. Why it matters: governance only works if it's visible.
+> - "Premium runtime" sidebar callout (rendered as a hairlined card, not a hero band): one paragraph explaining NemoClaw / OpenShell as a future option for sandboxed autonomous workloads, security-sensitive deployments, and enterprise customers. **Not part of v1.** Plain factual tone — not "coming soon" hype.
+> - Closing band: "Why we built it this way." — three short paragraphs on (a) governance is not theatre, (b) narrow workflows beat open autonomy, (c) the approval queue is the entire commercial thesis.
 > - Final CTABand.
 >
-> Editorial tone. Source Serif 4 for body where it earns it (long paragraphs in layer sections). No icons.
+> Editorial tone. Source Serif 4 for body in the layer sections (long paragraphs earn serif). No icons.
 
 - [ ] **Step 2: Smoke check**
 
@@ -568,7 +574,7 @@ git commit -m "feat(framework): build sovereign ai operations framework page"
 - Create: `web/components/trust/risk-tier-table.tsx`
 - Create: `web/components/trust/posture-card.tsx`
 
-Spec reference: §4.6, PRD §10.5, §15, §16.
+Spec reference: §4.6, PRD §10.5, §15, §16. Also reflects 2026-04-25 architecture amendment (rails wrap LLM, sovereign residency via Bedrock Sydney / Azure AU East, NemoClaw moved to premium/R&D).
 
 - [ ] **Step 1: Generate Trust via frontend-design**
 
@@ -577,11 +583,13 @@ Invoke `frontend-design:frontend-design`:
 > Build `app/trust/page.tsx` for AAO Group. Spec §4.6 + PRD §10.5 (data classification), §15 (security), §16 (governance/risk tiers).
 >
 > **Structure:**
-> - Page hero: title "Trust is the product.", lede "Approval gates, logs, and data boundaries — the controls that let you actually use AI in your business."
+> - Page hero: title "Trust is the product.", lede "Approval gates, logs, data boundaries, and onshore models — the controls that let you actually use AI in your business."
 > - PostureCard row (3): "Approval-gated by default" / "Every action logged" / "Read-only first". One paragraph each.
-> - "Approval gates" section — what they are, when they fire, who approves, what the audit trail looks like (describe in prose).
+> - "Approval gates" section — **lead with: this is the product, not a feature.** What they are, when they fire, who approves, what the audit trail looks like (describe in prose).
 > - "Logs and audit trail" section — what's logged, retention, access.
 > - "Data boundaries" section — DataClassTable rendering PRD §10.5 (5 levels: Public / Internal / Confidential / Sensitive / Regulated, with handling per level).
+> - "Sovereign data residency" section — one paragraph: model calls run via Amazon Bedrock (ap-southeast-2 / Sydney) or Azure (Australia East) where the chosen model is supported; customer data stays onshore; each deployment includes a model-region check; the model and region are documented in the client's policy.
+> - "Guarded LLM" section — one paragraph + a minimal pure-CSS three-band diagram (Input rails → LLM call → Output rails) with a vertical "topical / dialog / policy rails" label spanning all three. Reference NVIDIA NeMo Guardrails rail types in plain prose. Lead: guardrails wrap the LLM, not just sit downstream.
 > - "Risk tiers" section — RiskTierTable rendering PRD §16.2 (5 tiers, control level per tier).
 > - "Model and provider register" section — one paragraph: we publish the model and provider for every workflow; clients can restrict providers in their policy.
 > - "Incident response" section — incident severity scale, escalation path, client notification commitment.

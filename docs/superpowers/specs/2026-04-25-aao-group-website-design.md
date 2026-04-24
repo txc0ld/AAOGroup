@@ -150,7 +150,7 @@ Each page includes: purpose, sections, key copy beats, components used. Detailed
 2. **Problem** — Three-column statement of the operational pain (missed leads, owner-trapped inboxes, scattered SOPs). Plain prose, no icons.
 3. **What we install** — Three offer cards: Audit / Pilot / Subscription. Each card → Services page.
 4. **Use cases strip** — Five vertical cards (logo-style), each → use case detail.
-5. **Framework preview** — One-paragraph intro to Sovereign AI Operations Framework + diagram of the 5 layers + link to `/framework`.
+5. **Framework preview** — One-paragraph intro to the Sovereign AI Operations Framework + a five-layer stacked diagram labelled in order: **Integration → Workflow → Guarded LLM → Approval Queue → Audit**. The Approval Queue band is visually emphasised (slightly taller, hairline accent, mono label "the wedge") because it is the product. Link to `/framework`.
 6. **Governance and trust band** — Dark section. Three pillars: approval gates, logs, data boundaries. Numbers (e.g., "Every tool call logged"). Link to `/trust`.
 7. **Pricing anchor** — Three-tier preview (Audit, Pilot, Subscription) with starting prices. Link to `/pricing`.
 8. **CTA band** — Single line + button. Calendly link.
@@ -159,7 +159,17 @@ Each page includes: purpose, sections, key copy beats, components used. Detailed
 Three offers expanded: Audit, First Agent Pilot, Managed Subscription. Each: purpose, what's included, deliverables, price band, ideal for. Comparison table at bottom. Sticky CTA.
 
 ### 4.3 Framework (`/framework`)
-The Sovereign AI Operations Framework — five-layer architecture diagram, plain-English explanation per layer, why each layer matters to a non-technical owner. This page is the moat — it should feel like reading a methodology white paper, not a sales page.
+The Sovereign AI Operations Framework — five-layer architecture, plain-English explanation per layer, why each layer matters to a non-technical owner. This page is the moat — it should feel like reading a methodology white paper, not a sales page.
+
+**Hardened v1 architecture (use this, not the old draft):**
+
+1. **Integration** — OAuth/webhooks/polling into the systems your business already runs (Gmail, Outlook, forms, CRM, Xero, Sheets). Normalised into a consistent event stream.
+2. **Workflow** — A deterministic state machine plus narrow, scoped task agents (LangGraph). No open-ended autonomy. Each workflow has a defined start, stops, and outputs.
+3. **Guarded LLM** — The model call sits inside guardrails, not behind them. **Input rails** validate the request before the LLM ever sees it. **Output rails** check the response before it leaves. **Topical, dialog, and policy rails** constrain what the model is allowed to do at every step. Models run via Amazon Bedrock (Sydney region) or Azure (Australia East) where supported, so data stays onshore.
+4. **Approval queue** — The wedge. Every customer-facing or system-changing action lands here for human approve / edit / reject. This is the product.
+5. **Audit** — Every tool call, every approval decision, every rail trip is logged. Monthly client report rolls it up into business outcomes.
+
+**Sidebar callout (separate, not part of the five layers):** *Premium runtime — NemoClaw / OpenShell.* Reserved for sandboxed autonomous workloads, security-sensitive deployments, and enterprise customers who require it. Not part of the v1 default stack.
 
 ### 4.4 Use cases — index (`/use-cases`)
 Five vertical cards. Each shows: vertical, primary pain, first product (Lead Intake / Quote Prep / etc.), expected ROI band. Click → detail page.
@@ -176,11 +186,13 @@ Single template, populated five times. Sections:
 ### 4.6 Trust & Security (`/trust`)
 The reason the brand exists. Sections:
 - Posture summary (one paragraph)
-- Approval gates (what they are, why they matter)
+- Approval gates (what they are, why they matter) — **the product, not a feature**
 - Logs and audit trail
 - Data boundaries (data classification table from PRD §10.5)
+- **Sovereign data residency** — Models run via Amazon Bedrock (ap-southeast-2 / Sydney) or Azure (Australia East) where supported. Customer data stays onshore. Each deployment includes a model-region check and is documented in the client's model/provider register.
+- **Guarded LLM model** — Guardrails wrap the LLM, not just sit downstream: input rails validate before the model sees the request; output rails check before any response leaves; topical/dialog/policy rails constrain behaviour throughout. Reference: NVIDIA NeMo Guardrails rail types.
 - Risk tier table (PRD §16.2)
-- Model and provider register (one-liner — "we publish ours")
+- Model and provider register (one-liner — "we publish ours per workflow; clients can restrict providers in their policy")
 - Incident response process
 - ABN, insurance, contact for security questions (placeholder fields)
 
