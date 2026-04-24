@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
 import { CTABand } from "@/components/cta-band";
+import { Reveal } from "@/components/reveal";
 import { listInsights, formatInsightDate } from "@/lib/insights";
 
 export const metadata: Metadata = {
@@ -31,9 +32,11 @@ export default function InsightsIndexPage() {
           </p>
         ) : (
           <ul className="flex flex-col">
-            {insights.map((insight) => (
-              <li
+            {insights.map((insight, i) => (
+              <Reveal
+                as="li"
                 key={insight.slug}
+                delay={i * 80}
                 className="border-t border-[var(--color-rule)] first:border-t-0 py-10 first:pt-0"
               >
                 <article className="grid grid-cols-1 gap-6 lg:grid-cols-[10rem_1fr] lg:gap-12">
@@ -57,7 +60,7 @@ export default function InsightsIndexPage() {
                     </p>
                   </div>
                 </article>
-              </li>
+              </Reveal>
             ))}
           </ul>
         )}

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type Principle = {
@@ -62,9 +63,11 @@ const PRINCIPLES: Principle[] = [
 export function PrincipleList() {
   return (
     <ol className="mt-12 border-t border-[var(--color-rule)]">
-      {PRINCIPLES.map((principle) => (
-        <li
+      {PRINCIPLES.map((principle, i) => (
+        <Reveal
+          as="li"
           key={principle.number}
+          delay={Math.min(i * 50, 500)}
           className={cn(
             "grid grid-cols-[auto_1fr] gap-6 sm:gap-10",
             "border-b border-[var(--color-rule)]",
@@ -107,7 +110,7 @@ export function PrincipleList() {
               {principle.body}
             </p>
           </div>
-        </li>
+        </Reveal>
       ))}
     </ol>
   );

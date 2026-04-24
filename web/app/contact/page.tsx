@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { CTABand } from "@/components/cta-band";
 import { CalendlyEmbed } from "@/components/contact/calendly-embed";
 import { EnquiryForm } from "@/components/contact/enquiry-form";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function ContactPage() {
 
       <Section className="pt-0">
         <div className="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-2">
-          <div className="flex flex-col">
+          <Reveal className="flex flex-col">
             <p className={columnLabelClass}>Book directly</p>
             <h2 className={columnHeadingClass}>
               Pick a time that suits you.
@@ -59,9 +60,9 @@ export default function ContactPage() {
             <div className="mt-8 border-t border-[var(--color-rule)] pt-8">
               <CalendlyEmbed />
             </div>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col">
+          <Reveal delay={120} className="flex flex-col">
             <p className={columnLabelClass}>Or send us a note</p>
             <h2 className={columnHeadingClass}>
               Tell us where the time goes.
@@ -69,7 +70,7 @@ export default function ContactPage() {
             <div className="mt-8 border-t border-[var(--color-rule)] pt-8">
               <EnquiryForm />
             </div>
-          </div>
+          </Reveal>
         </div>
       </Section>
 
@@ -79,7 +80,7 @@ export default function ContactPage() {
           title="Direct lines."
         />
         <div className="mt-12 grid grid-cols-1 gap-px bg-[var(--color-rule)] md:grid-cols-3">
-          <div className="bg-[var(--color-paper)] p-8">
+          <Reveal className="bg-[var(--color-paper)] p-8">
             <p className={reachLabelClass}>Email</p>
             <p className={reachValueClass}>
               <a
@@ -89,16 +90,16 @@ export default function ContactPage() {
                 hello@aaogroup.au
               </a>
             </p>
-          </div>
-          <div className="bg-[var(--color-paper)] p-8">
+          </Reveal>
+          <Reveal delay={80} className="bg-[var(--color-paper)] p-8">
             <p className={reachLabelClass}>Office</p>
             <p className={reachValueClass}>Perth, Western Australia</p>
             <p className={reachNoteClass}>Visiting by appointment.</p>
-          </div>
-          <div className="bg-[var(--color-paper)] p-8">
+          </Reveal>
+          <Reveal delay={160} className="bg-[var(--color-paper)] p-8">
             <p className={reachLabelClass}>ABN</p>
             <p className={reachValueClass}>[placeholder — to be issued]</p>
-          </div>
+          </Reveal>
         </div>
       </Section>
 

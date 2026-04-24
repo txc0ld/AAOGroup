@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 const useCases = [
@@ -43,12 +44,12 @@ export function UseCasesStrip() {
           "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5",
         )}
       >
-        {useCases.map((u) => (
-          <li key={u.slug}>
+        {useCases.map((u, i) => (
+          <Reveal as="li" key={u.slug} delay={i * 80}>
             <a
               href={`/use-cases/${u.slug}`}
               className={cn(
-                "group flex h-full flex-col justify-between",
+                "card-hover group flex h-full flex-col justify-between",
                 "border border-[var(--color-rule)] bg-[var(--color-paper)]",
                 "p-7 min-h-[14rem]",
                 "transition-colors duration-200",
@@ -65,12 +66,12 @@ export function UseCasesStrip() {
               </div>
               <span
                 aria-hidden="true"
-                className="mt-8 inline-block font-sans text-[1rem] text-[var(--color-ink)] transition-transform duration-200 group-hover:translate-x-1"
+                className="card-arrow mt-8 inline-block font-sans text-[1rem] text-[var(--color-ink)] transition-transform duration-200 group-hover:translate-x-1"
               >
                 →
               </span>
             </a>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </Section>

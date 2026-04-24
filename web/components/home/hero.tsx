@@ -18,6 +18,7 @@ export function Hero() {
       >
         <h1
           className={cn(
+            "paint-in paint-delay-1",
             "font-sans font-medium tracking-[-0.03em]",
             "text-[clamp(3rem,8vw,5.5rem)] leading-[0.98]",
             "max-w-[18ch]",
@@ -27,6 +28,7 @@ export function Hero() {
         </h1>
         <p
           className={cn(
+            "paint-in paint-delay-3",
             "mt-8 font-sans text-[1.125rem] leading-[1.55] text-[var(--color-muted)]",
             "max-w-[36rem]",
           )}
@@ -34,7 +36,7 @@ export function Hero() {
           We install controlled AI operators inside your business — with
           approval gates, logs, and data boundaries.
         </p>
-        <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
+        <div className="paint-in paint-delay-4 mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
           <Button as="a" href="/contact" variant="primary" size="lg">
             Book a 15-minute audit
           </Button>

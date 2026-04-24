@@ -6,6 +6,7 @@ import { CTABand } from "@/components/cta-band";
 import { MetricPill } from "@/components/use-cases/metric-pill";
 import { ScreenshotMock } from "@/components/use-cases/screenshot-mock";
 import { WorkflowSteps } from "@/components/use-cases/workflow-steps";
+import { Reveal } from "@/components/reveal";
 import { USE_CASES, type UseCase } from "@/lib/use-cases";
 import { cn } from "@/lib/cn";
 
@@ -138,13 +139,13 @@ export default async function UseCaseDetailPage({
           title="What clients feel within weeks."
           lede="Indicative ranges based on engagements to date. Your numbers depend on baseline."
         />
-        <ul className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <Reveal as="ul" className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
           {useCase.outcomes.map((outcome) => (
             <li key={outcome.label}>
               <MetricPill label={outcome.label} value={outcome.value} />
             </li>
           ))}
-        </ul>
+        </Reveal>
       </Section>
 
       <CTABand

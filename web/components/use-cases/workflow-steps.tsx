@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type WorkflowStepsProps = {
@@ -10,8 +11,10 @@ export function WorkflowSteps({ steps }: WorkflowStepsProps) {
       {steps.map((item, index) => {
         const number = String(index + 1).padStart(2, "0");
         return (
-          <li
+          <Reveal
+            as="li"
             key={item.step}
+            delay={index * 70}
             className={cn(
               "grid grid-cols-[auto_1fr] gap-x-8 md:gap-x-12",
               "border-b border-[var(--color-rule)]",
@@ -50,7 +53,7 @@ export function WorkflowSteps({ steps }: WorkflowStepsProps) {
                 {item.detail}
               </p>
             </div>
-          </li>
+          </Reveal>
         );
       })}
     </ol>

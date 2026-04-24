@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type ScreenshotMockProps = {
@@ -42,6 +43,7 @@ export function ScreenshotMock({
   const body = BODY_COPY[vertical] ?? [];
 
   return (
+    <Reveal>
     <figure
       role="img"
       aria-label={`Approval queue mock for ${firstAgent}`}
@@ -165,5 +167,6 @@ export function ScreenshotMock({
         ))}
       </div>
     </figure>
+    </Reveal>
   );
 }

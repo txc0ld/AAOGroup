@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { Button } from "@/components/button";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type SubTier = {
@@ -93,8 +94,10 @@ export function PricingTable() {
         )}
       >
         {columns.map((col, i) => (
-          <article
+          <Reveal
+            as="article"
             key={col.eyebrow}
+            delay={i * 100}
             className={cn(
               "flex flex-col py-12 md:py-14",
               "border-b border-[var(--color-rule)]",
@@ -178,7 +181,7 @@ export function PricingTable() {
                 {col.ctaLabel}
               </Button>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </Section>

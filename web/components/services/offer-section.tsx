@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Section } from "@/components/section";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type OfferSectionProps = {
@@ -42,7 +43,7 @@ export function OfferSection({
 
   return (
     <Section id={id} tone={tone} className="scroll-mt-24">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <Reveal className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left rail: number + name + purpose */}
         <header className="lg:col-span-5">
           <p
@@ -198,7 +199,7 @@ export function OfferSection({
 
           {children ? <div className="mt-12">{children}</div> : null}
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }

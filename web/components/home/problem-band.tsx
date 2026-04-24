@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 const problems = [
@@ -32,8 +33,10 @@ export function ProblemBand() {
         )}
       >
         {problems.map((p, i) => (
-          <li
+          <Reveal
+            as="li"
             key={p.title}
+            delay={i * 100}
             className={cn(
               "md:px-10",
               i === 0 && "md:pl-0",
@@ -46,7 +49,7 @@ export function ProblemBand() {
             <p className="mt-4 font-sans text-[1rem] leading-[1.6] text-[var(--color-muted)] max-w-[34ch]">
               {p.body}
             </p>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </Section>

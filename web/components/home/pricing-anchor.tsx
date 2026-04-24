@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 const tiers = [
@@ -36,8 +37,10 @@ export function PricingAnchor() {
         )}
       >
         {tiers.map((t, i) => (
-          <li
+          <Reveal
+            as="li"
             key={t.name}
+            delay={i * 100}
             className={cn(
               "flex flex-col py-10 md:py-12",
               "border-b border-[var(--color-rule)]",
@@ -55,7 +58,7 @@ export function PricingAnchor() {
             <p className="mt-5 font-sans text-[1rem] leading-[1.6] text-[var(--color-muted)] max-w-[34ch]">
               {t.scope}
             </p>
-          </li>
+          </Reveal>
         ))}
       </ul>
       <div className="mt-12">

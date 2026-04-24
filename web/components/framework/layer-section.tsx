@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Section } from "@/components/section";
 import { Prose } from "@/components/prose";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type LayerSectionProps = {
@@ -31,7 +32,7 @@ export function LayerSection({
         withTopRule && "border-t border-[var(--color-rule)]",
       )}
     >
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <Reveal className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left: number + name */}
         <header className="lg:col-span-5">
           <p
@@ -84,7 +85,7 @@ export function LayerSection({
             </Prose>
           </Block>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }

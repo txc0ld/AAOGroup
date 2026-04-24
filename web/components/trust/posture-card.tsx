@@ -10,7 +10,7 @@ export function PostureCard({ heading, body, className }: PostureCardProps) {
   return (
     <article
       className={cn(
-        "flex flex-col",
+        "card-hover flex flex-col",
         "bg-[var(--color-paper-2)]",
         "border border-[var(--color-rule)]",
         "p-6 md:p-7",

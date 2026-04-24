@@ -1,4 +1,5 @@
 import { Section } from "@/components/section";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type Layer = {
@@ -40,7 +41,7 @@ const layers: Layer[] = [
 export function FrameworkPreview() {
   return (
     <Section tone="ink">
-      <div className="max-w-[44rem]">
+      <Reveal className="max-w-[44rem]">
         <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-[rgb(246_244_238_/_0.6)]">
           The framework
         </p>
@@ -53,19 +54,21 @@ export function FrameworkPreview() {
           infrastructure. The approval queue is the product. Everything else
           supports it.
         </p>
-      </div>
+      </Reveal>
 
       <ol className="mt-16 flex flex-col gap-3">
-        {layers.map((layer) => {
+        {layers.map((layer, i) => {
           const emphasised = layer.emphasised === true;
           return (
-            <li
+            <Reveal
+              as="li"
               key={layer.number}
+              delay={i * 90}
               className={cn(
                 "relative w-full",
                 "border",
                 emphasised
-                  ? "bg-[var(--color-paper)] text-[var(--color-ink)] border-[var(--color-paper)]"
+                  ? "wedge-pulse bg-[var(--color-paper)] text-[var(--color-ink)] border-[var(--color-paper)]"
                   : "bg-transparent text-[var(--color-paper)] border-[rgb(246_244_238_/_0.18)]",
                 emphasised ? "py-10 md:py-14" : "py-6 md:py-8",
                 "px-6 md:px-10",
@@ -113,7 +116,7 @@ export function FrameworkPreview() {
                   </p>
                 </div>
               </div>
-            </li>
+            </Reveal>
           );
         })}
       </ol>

@@ -6,6 +6,7 @@ import { CTABand } from "@/components/cta-band";
 import { PostureCard } from "@/components/trust/posture-card";
 import { DataClassTable } from "@/components/trust/data-class-table";
 import { RiskTierTable } from "@/components/trust/risk-tier-table";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -51,12 +52,14 @@ export default function TrustPage() {
       {/* 2. PostureCard row */}
       <Section className="!pt-0">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {postures.map((p) => (
-            <PostureCard
-              key={p.heading}
-              heading={p.heading}
-              body={p.body}
-            />
+          {postures.map((p, i) => (
+            <Reveal key={p.heading} delay={i * 100} className="h-full">
+              <PostureCard
+                heading={p.heading}
+                body={p.body}
+                className="h-full"
+              />
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -128,7 +131,9 @@ export default function TrustPage() {
             </p>
           </Prose>
         </div>
-        <DataClassTable />
+        <Reveal>
+          <DataClassTable />
+        </Reveal>
       </Section>
 
       {/* 6. Sovereign data residency */}
@@ -161,7 +166,8 @@ export default function TrustPage() {
         />
 
         {/* Diagram */}
-        <figure className="mt-12">
+        <Reveal as="div" className="mt-12">
+        <figure>
           <div
             className={cn(
               "relative",
@@ -283,6 +289,7 @@ export default function TrustPage() {
             Figure · Guarded LLM call path
           </figcaption>
         </figure>
+        </Reveal>
 
         <div className="mt-10">
           <Prose>
@@ -317,7 +324,9 @@ export default function TrustPage() {
             </p>
           </Prose>
         </div>
-        <RiskTierTable />
+        <Reveal>
+          <RiskTierTable />
+        </Reveal>
       </Section>
 
       {/* 9. Model and provider register */}

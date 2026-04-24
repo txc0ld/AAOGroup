@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type FAQ = {
@@ -44,9 +45,11 @@ export function PricingFAQ() {
           "border-t border-[var(--color-rule)]",
         )}
       >
-        {faqs.map((item) => (
-          <li
+        {faqs.map((item, i) => (
+          <Reveal
+            as="li"
             key={item.q}
+            delay={i * 50}
             className="border-b border-[var(--color-rule)]"
           >
             <details
@@ -94,7 +97,7 @@ export function PricingFAQ() {
                 {item.a}
               </div>
             </details>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </Section>

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type Cell = string | boolean;
@@ -82,7 +83,7 @@ function CellContent({ value }: { value: Cell }) {
 
 export function ComparisonTable() {
   return (
-    <div className="mt-14">
+    <Reveal className="mt-14">
       {/* Desktop table */}
       <div className="hidden md:block">
         <table className="w-full border-collapse">
@@ -171,6 +172,6 @@ export function ComparisonTable() {
           </div>
         ))}
       </div>
-    </div>
+    </Reveal>
   );
 }

@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { Button } from "@/components/button";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type CTABandProps = {
@@ -31,7 +32,7 @@ export function CTABand({
       tone={tone}
       className={cn("py-[clamp(5rem,12vw,9rem)]", className)}
     >
-      <div className="mx-auto flex max-w-[44rem] flex-col items-center text-center">
+      <Reveal className="mx-auto flex max-w-[44rem] flex-col items-center text-center">
         <h2
           className={cn(
             "font-sans font-medium tracking-[-0.02em]",
@@ -68,7 +69,7 @@ export function CTABand({
             </Button>
           ) : null}
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }

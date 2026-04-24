@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 const offers = [
@@ -41,11 +42,13 @@ export function OfferCards() {
         lede="Start with an audit. Move to a pilot once we agree on the workflow worth building. Bring us on as operators after the pilot proves out."
       />
       <ul className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
-        {offers.map((o) => (
-          <li
+        {offers.map((o, i) => (
+          <Reveal
+            as="li"
             key={o.title}
+            delay={i * 100}
             className={cn(
-              "flex flex-col",
+              "card-hover flex flex-col",
               "bg-[var(--color-paper-2)]",
               "border border-[var(--color-rule)]",
               "p-8 md:p-10",
@@ -76,9 +79,9 @@ export function OfferCards() {
                 "underline-offset-[6px] decoration-[1px] hover:underline",
               )}
             >
-              Learn more <span aria-hidden="true">→</span>
+              Learn more <span aria-hidden="true" className="card-arrow">→</span>
             </a>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </Section>

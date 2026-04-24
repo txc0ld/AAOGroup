@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/section";
 import { CTABand } from "@/components/cta-band";
+import { Reveal } from "@/components/reveal";
 import { listInsights, formatInsightDate } from "@/lib/insights";
 
 type Params = { slug: string };
@@ -43,7 +44,7 @@ export default async function InsightDetailPage({
   return (
     <>
       <Section>
-        <header className="flex flex-col">
+        <Reveal as="header" className="flex flex-col">
           <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-[var(--color-muted)]">
             {formatInsightDate(insight.date)} · {insight.readingMinutes} min read
           </p>
@@ -53,7 +54,7 @@ export default async function InsightDetailPage({
           <p className="mt-6 font-sans text-[1.125rem] leading-[1.55] text-[var(--color-muted)] max-w-[var(--measure)]">
             {insight.description}
           </p>
-        </header>
+        </Reveal>
       </Section>
 
       <Section className="border-t border-[var(--color-rule)]">

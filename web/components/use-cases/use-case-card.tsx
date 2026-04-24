@@ -11,7 +11,7 @@ export function UseCaseCard({ useCase }: UseCaseCardProps) {
     <Link
       href={`/use-cases/${useCase.slug}`}
       className={cn(
-        "group flex h-full flex-col",
+        "card-hover group flex h-full flex-col",
         "bg-[var(--color-paper-2)]",
         "border border-[var(--color-rule)]",
         "p-7 md:p-8",
@@ -71,7 +71,7 @@ export function UseCaseCard({ useCase }: UseCaseCardProps) {
           <span
             aria-hidden="true"
             className={cn(
-              "shrink-0 font-sans text-[1.25rem] leading-none",
+              "card-arrow shrink-0 font-sans text-[1.25rem] leading-none",
               "text-[var(--color-ink)]",
               "translate-x-0 transition-transform duration-200",
               "group-hover:translate-x-1",

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/cn";
 
 type Layer = {
@@ -57,9 +58,12 @@ export function LayerDiagram() {
         const isFirst = index === 0;
 
         return (
-          <li
+          <Reveal
+            as="li"
             key={layer.number}
+            delay={index * 90}
             className={cn(
+              emphasised && "wedge-pulse",
               !isFirst && "border-t border-[var(--color-rule)]",
             )}
           >
@@ -153,7 +157,7 @@ export function LayerDiagram() {
                 </span>
               </div>
             </a>
-          </li>
+          </Reveal>
         );
       })}
     </ol>
