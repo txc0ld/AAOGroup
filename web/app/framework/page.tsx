@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
 import { Prose } from "@/components/prose";
+import { Reveal } from "@/components/reveal";
 import { CTABand } from "@/components/cta-band";
 import { LayerDiagram } from "@/components/framework/layer-diagram";
 import { LayerSection } from "@/components/framework/layer-section";
+import { AGENT_SKILLS } from "@/lib/skills";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -209,6 +211,58 @@ export default function FrameworkPage() {
               </p>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* 3b. Agent Skill Library — operating engine room (PRD §27) */}
+      <Section
+        tone="paper"
+        className="bg-[var(--color-paper-2)] border-t border-[var(--color-rule)]"
+      >
+        <SectionHeading
+          eyebrow="Operating engine room"
+          title="The skills that prepare your deployment."
+          lede="Behind every audit, pilot, and monthly report sits a small library of named, narrow, advisory skills. They produce the deliverables. They do not act on client systems."
+        />
+
+        <ul
+          className={cn(
+            "mt-12 grid grid-cols-1 md:grid-cols-2",
+            "border-t border-[var(--color-rule)]",
+          )}
+        >
+          {AGENT_SKILLS.map((skill, index) => (
+            <Reveal
+              as="li"
+              key={skill.name}
+              delay={index * 40}
+              className={cn(
+                "border-b border-[var(--color-rule)]",
+                "py-6 md:py-7",
+                "md:[&:nth-child(odd)]:pr-8 md:[&:nth-child(even)]:pl-8",
+                "md:[&:nth-child(even)]:border-l md:[&:nth-child(even)]:border-[var(--color-rule)]",
+              )}
+            >
+              <p className="font-sans font-medium tracking-[-0.005em] text-[1.0625rem] leading-[1.3] text-[var(--color-ink)]">
+                {skill.name}
+              </p>
+              <p className="mt-2 font-sans text-[0.9375rem] leading-[1.55] text-[var(--color-muted)] max-w-[var(--measure)]">
+                {skill.purpose}
+              </p>
+            </Reveal>
+          ))}
+        </ul>
+
+        <div className="mt-14">
+          <Prose className="mx-0">
+            <p>
+              Skills are advisory and preparatory. They run during discovery,
+              onboarding, workflow design, reporting, and optimisation — never
+              in the live workflow itself. They cannot send emails, modify CRM
+              records, publish reports, or execute client-system actions.
+              Workflow execution remains deterministic and approval-gated.
+            </p>
+          </Prose>
         </div>
       </Section>
 

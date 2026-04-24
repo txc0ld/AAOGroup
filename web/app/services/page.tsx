@@ -117,7 +117,12 @@ export default function ServicesPage() {
             Book the audit
           </Button>
         }
-      />
+      >
+        <p className="font-mono text-[0.75rem] uppercase tracking-[0.18em] leading-[1.6] text-[var(--color-muted)] max-w-[var(--measure)]">
+          Each deliverable is produced by a named skill from our internal Agent
+          Skill Library — and reviewed by an operator before you see it.
+        </p>
+      </OfferSection>
 
       {/* Offer 2: Pilot */}
       <OfferSection
