@@ -2,7 +2,7 @@
 
 **Product name:** Working title — **Sovereign AI Ops**  
 **Commercial vehicle:** Managed AI Operations for Australian SMBs  
-**Technical basis:** NVIDIA NemoClaw, NVIDIA OpenShell, NVIDIA NeMo Agent Toolkit, NeMo Guardrails, approved inference providers, and a proprietary delivery/control layer  
+**Technical basis:** Simplified governed workflow runtime using deterministic state machines, LangGraph-scoped task agents, approved LLM providers in Australian regions where available, NeMo Guardrails for policy rails, a human approval queue, audit logging, and a proprietary operator/client control layer. NemoClaw/OpenShell is reserved for R&D, premium sandboxing, or later enterprise-style deployments rather than the v1 commercial core.  
 **Primary market:** Australian SMBs and mid-market operators  
 **Version:** v1.0  
 **Status:** Build-ready strategic PRD  
@@ -15,7 +15,7 @@
 
 Australian SMBs do not need another chatbot, automation consultant, or generic AI workshop. They need a controlled operating layer that can safely remove repetitive work from their businesses: lead handling, quoting, inbox triage, reporting, document processing, internal SOP retrieval, and admin follow-up.
 
-The product is a **managed AI operations platform and service layer** that installs governed AI agents inside SMB workflows. The platform uses NVIDIA NemoClaw/OpenShell-style sandboxing where appropriate, NeMo Agent Toolkit for orchestration, NeMo Guardrails for policy constraints, approved model providers for inference, and a proprietary client/operator dashboard that manages approvals, logs, workflow performance, risk events, and monthly reporting.
+The product is a **managed AI operations platform and service layer** that installs governed, narrow AI task agents inside SMB workflows. The v1 platform deliberately avoids heavy autonomous infrastructure. It uses deterministic workflow state machines, scoped LangGraph task agents, approved LLM providers, NeMo Guardrails for input/output/topical policy rails, and a proprietary client/operator dashboard that manages approvals, logs, workflow performance, risk events, and monthly reporting.
 
 The initial business should be sold as a **high-ticket managed implementation and recurring subscription**, not as self-serve SaaS. The early moat is not the software alone. The moat is the combination of:
 
@@ -85,15 +85,17 @@ The timing is attractive because:
 
 ### 3.3 Strategic Constraint
 
-NemoClaw should be treated as an early-stage reference stack, not the sole production foundation for all customer deployments.
+NemoClaw should be treated as an early-stage reference stack, not the production foundation for v1 customer deployments.
 
-The production strategy must therefore use a layered approach:
+The production strategy must therefore use a simpler layered approach:
 
-- Use NemoClaw/OpenShell concepts where sandboxing and autonomous assistant containment are useful.
-- Use NeMo Agent Toolkit for orchestrated workflows.
-- Use NeMo Guardrails for policy and behavioural controls.
-- Use standard cloud infrastructure, containerisation, logging, approval systems, and integration gateways for commercial reliability.
-- Keep early customer deployments narrow, monitored, and approval-gated.
+- Use deterministic workflow state machines as the commercial runtime backbone.
+- Use LangGraph for narrow scoped task agents, not open-ended autonomy.
+- Use NeMo Guardrails around model interactions for input, output, topical, and policy control.
+- Use approved LLM providers through Australian-region infrastructure where commercially and technically available.
+- Use human approval as the central product surface.
+- Keep every early deployment narrow, monitored, logged, and approval-gated.
+- Reserve NemoClaw/OpenShell for internal R&D, advanced sandboxing, or premium deployments where the client’s risk profile and budget justify it.
 
 ---
 
@@ -270,82 +272,95 @@ Reasons:
 
 ### 8.1 Product Layers
 
-The commercial product consists of five layers:
+The commercial product consists of nine layers:
 
-1. **Discovery Layer** — maps workflows, systems, data, risk, and ROI.
-2. **Governance Layer** — policies, approvals, access scopes, risk classification, audit logs.
-3. **Agent Runtime Layer** — orchestrated AI workflows using NemoClaw/OpenShell where appropriate, NeMo Agent Toolkit, NeMo Guardrails, and other approved runtime components.
-4. **Integration Layer** — email, calendar, CRM, files, accounting, job systems, forms, webhooks, APIs.
-5. **Operator Layer** — dashboard for approvals, monitoring, reporting, cost, incidents, and monthly optimisation.
+1. **Client Systems Layer** — Gmail, Outlook, forms, CRM, Xero, Sheets, SharePoint, Google Drive, job systems, and other client tools.
+2. **Integration Layer** — OAuth, webhooks, polling, normalisation, API connectors, and data minimisation.
+3. **Workflow Engine Layer** — deterministic state machines that define each workflow step, state, retry path, and approval gate.
+4. **Narrow Task Agent Layer** — LangGraph-scoped task agents for classification, extraction, summarisation, drafting, validation, and reporting. No open-ended autonomy in v1.
+5. **LLM Layer** — Claude/GPT or other approved models through Bedrock Sydney, Azure Australia East, or other approved regional infrastructure where available and suitable.
+6. **Guardrails Layer** — NeMo Guardrails for input rails, output rails, topical rails, dialog constraints, retrieval validation, and policy checks.
+7. **Human Approval Queue** — the core product surface where humans approve, edit, reject, or escalate AI-proposed actions.
+8. **Action Layer** — approved actions such as reply, CRM update, quote packet generation, notification, task creation, and report delivery.
+9. **Audit and Reporting Layer** — immutable logs, approval history, workflow metrics, cost tracking, incidents, and monthly client reports.
 
 ### 8.2 Technical Reference Architecture
 
 ```text
-Client systems
-  - Gmail / Microsoft 365
-  - Calendar
+Client Systems
+  - Gmail / Outlook
+  - Forms
   - CRM
   - Xero / MYOB
-  - ServiceM8 / simPRO / Shopify / HubSpot
+  - Google Sheets / Excel
   - SharePoint / Google Drive
-  - Website forms
-  - Spreadsheets
+  - Job systems
 
         ↓
 
-Integration gateway
-  - OAuth / API connectors
-  - Webhook receivers
-  - Data redaction
+Integration Layer
+  - OAuth
+  - Webhooks
+  - Polling
+  - Normalisation
+  - Data minimisation
   - Scope control
-  - Event queue
-  - Audit log generation
 
         ↓
 
-Workflow orchestration
-  - NeMo Agent Toolkit workflows
-  - Tool routing
-  - Task decomposition
-  - State machine execution
-  - Evaluation hooks
+Workflow Engine
+  - Deterministic state machine
+  - Explicit workflow states
+  - Retry paths
+  - Escalation paths
+  - Approval gates
 
         ↓
 
-Policy and safety layer
-  - NeMo Guardrails
-  - Human approval matrix
-  - Prompt/tool constraints
-  - Sensitive data handling rules
-  - Escalation rules
+Narrow Task Agents
+  - LangGraph
+  - Scoped task nodes
+  - No open-ended autonomy
+  - Extraction / classification / drafting / validation
 
         ↓
 
-Agent execution environment
-  - NemoClaw/OpenShell-style sandboxing where appropriate
-  - Containerised tools
-  - Filesystem boundaries
-  - Network allowlists
-  - Secrets isolation
+Guarded LLM Layer
+  - Claude / GPT / approved models
+  - Bedrock Sydney or Azure Australia East where available and suitable
+  - NeMo Guardrails around model calls
+  - Input rails before inference
+  - Output rails after inference
+  - Topical/dialog/policy rails around the workflow
 
         ↓
 
-Inference layer
-  - NVIDIA NIM where suitable
-  - Approved hosted LLMs
-  - Local models for select workflows
-  - Cost and routing controls
+Human Approval Queue
+  - The central product surface
+  - Approve / edit / reject / escalate
+  - Diff view
+  - Source context
+  - Risk label
 
         ↓
 
-Operator dashboard
-  - Approvals
-  - Logs
-  - Workflow status
-  - Risk events
+Action Layer
+  - Send reply
+  - Create CRM note
+  - Generate quote packet
+  - Notify staff
+  - Create task
+  - Produce report
+
+        ↓
+
+Audit Layer + Monthly Client Report
+  - Action logs
+  - Approval history
   - Costs
-  - ROI metrics
-  - Monthly reports
+  - Incidents
+  - Time saved
+  - Optimisation recommendations
 ```
 
 ---
@@ -1170,9 +1185,11 @@ The MVP is not a full SaaS platform. The MVP is an internal operator-led platfor
 
 - Client intake form.
 - Workflow template library for first 3 workflows.
-- Manual/semi-automated deployment process.
+- Deterministic workflow engine.
+- LangGraph-based narrow task-agent execution.
 - Integration with email/forms for one pilot use case.
-- Approval queue.
+- NeMo Guardrails configuration for input, output, topical, and policy checks.
+- Human approval queue as the primary client-facing product surface.
 - Activity logs.
 - Monthly report template.
 - Governance checklist.
@@ -1578,7 +1595,191 @@ MVP platform is acceptable when:
 
 ---
 
-## 27. Recommended Tech Stack
+## 27. Agent Skill Library
+
+### 27.1 Purpose
+
+The platform should include a controlled internal **Agent Skill Library**. These skills are not autonomous agents. They are reusable, scoped analysis and preparation routines that operators can run against client information during discovery, onboarding, workflow design, reporting, and optimisation.
+
+The skill library turns raw client information into structured implementation assets:
+
+- Workflow maps.
+- Risk profiles.
+- AI opportunity matrices.
+- Data sensitivity classifications.
+- Integration plans.
+- Approval policies.
+- Monthly improvement recommendations.
+- Client-facing audit reports.
+
+### 27.2 Skill Design Principles
+
+Each skill must be:
+
+1. **Narrow** — one clear job only.
+2. **Repeatable** — same input shape, same output structure.
+3. **Auditable** — log inputs, outputs, assumptions, and confidence.
+4. **Human-reviewed** — no client-facing recommendation is final without operator review.
+5. **Template-driven** — outputs should populate reports, configs, or proposals.
+6. **Client-isolated** — no cross-client memory or shared sensitive context.
+7. **Evidence-aware** — distinguish observed facts from assumptions and recommendations.
+
+### 27.3 Initial Agent Skills
+
+| Skill | Purpose | Input | Output |
+|---|---|---|---|
+| Client Intake Analyst | Converts onboarding answers into a structured client profile | Onboarding form, call notes | Client profile, business context, systems list |
+| Workflow Discovery Analyst | Identifies repetitive workflows worth automating | Interview notes, screenshots, docs | Workflow map, bottlenecks, automation candidates |
+| Data Sensitivity Classifier | Rates client data and workflow risk | Sample emails/docs/fields | Data classes, handling rules, red flags |
+| Integration Planner | Determines required system connections | Systems inventory | Integration plan, required scopes, setup checklist |
+| AI Opportunity Scorer | Ranks potential workflows by ROI and difficulty | Workflow list, pain scores | Opportunity matrix, priority order |
+| Approval Policy Designer | Defines where humans must approve actions | Workflow map, risk tier | Approval gates, user roles, escalation paths |
+| Guardrail Spec Writer | Produces workflow-specific guardrail rules | Workflow requirements | Input/output/topical/policy guardrail spec |
+| Pilot Proposal Writer | Creates first-agent pilot proposal | Audit outputs | Scope, timeline, pricing, success metrics |
+| Monthly Impact Analyst | Turns logs into client-facing performance insight | Workflow metrics, approvals, incidents | Monthly report narrative and recommendations |
+| Expansion Opportunity Analyst | Finds next workflow to automate | Usage logs, client feedback | Expansion roadmap and upsell recommendation |
+
+### 27.4 Client Intake Analyst Skill
+
+**Purpose:** Transform raw client onboarding information into a structured business and implementation profile.
+
+**Inputs:**
+
+- Onboarding form.
+- Discovery call transcript.
+- Business website.
+- Systems inventory.
+- Sample workflow notes.
+
+**Outputs:**
+
+- Business profile.
+- Key operational pain points.
+- Main systems used.
+- High-value workflow candidates.
+- Risk flags.
+- Missing information.
+- Recommended next interview questions.
+
+**Output schema:**
+
+```json
+{
+  "client_summary": "",
+  "industry": "",
+  "business_model": "",
+  "team_structure": "",
+  "systems": [],
+  "pain_points": [],
+  "workflow_candidates": [],
+  "data_risks": [],
+  "missing_information": [],
+  "recommended_next_questions": []
+}
+```
+
+### 27.5 Workflow Discovery Analyst Skill
+
+**Purpose:** Identify workflows suitable for v1 automation.
+
+**Evaluation criteria:**
+
+- Frequency.
+- Manual effort.
+- Error rate.
+- Revenue impact.
+- Data sensitivity.
+- Integration complexity.
+- Approval complexity.
+- Repeatability.
+
+**Output schema:**
+
+```json
+{
+  "workflow_name": "",
+  "current_process": "",
+  "trigger": "",
+  "inputs": [],
+  "manual_steps": [],
+  "pain_level": 1,
+  "automation_fit": 1,
+  "risk_level": "low|medium|high",
+  "recommended_mode": "shadow|approval|assisted_auto",
+  "success_metrics": []
+}
+```
+
+### 27.6 Data Sensitivity Classifier Skill
+
+**Purpose:** Classify workflow data before any automation is proposed.
+
+**Classification levels:**
+
+| Level | Label | Handling |
+|---:|---|---|
+| 0 | Public | Low-risk use |
+| 1 | Internal | Standard workflow controls |
+| 2 | Confidential | Approval-gated, logged |
+| 3 | Sensitive | Restricted processing, redaction where possible |
+| 4 | High-risk/regulated | Do not automate in v1 without enhanced review |
+
+### 27.7 AI Opportunity Scorer Skill
+
+**Purpose:** Rank workflow candidates and prevent the team from building the wrong first automation.
+
+**Scoring model:**
+
+```text
+Opportunity Score =
+  Revenue Impact × 0.30
++ Time Saved × 0.25
++ Repeatability × 0.20
++ Implementation Ease × 0.15
++ Risk Suitability × 0.10
+```
+
+Each score must include an evidence note and confidence level.
+
+### 27.8 Monthly Impact Analyst Skill
+
+**Purpose:** Convert audit logs and workflow metrics into a client-facing monthly report.
+
+**Inputs:**
+
+- Workflow run count.
+- Approvals.
+- Rejections.
+- Time-to-action.
+- Cost.
+- Escalations.
+- Incidents.
+- Manual operator notes.
+
+**Outputs:**
+
+- Executive summary.
+- Business impact.
+- Operational metrics.
+- Risk and quality notes.
+- Recommended next workflow.
+- Retainer justification narrative.
+
+### 27.9 Skill Execution Rules
+
+No skill may:
+
+- Execute client-system actions.
+- Send emails.
+- Modify CRM records.
+- Publish reports without operator review.
+- Infer sensitive facts without evidence.
+- Mix client data across accounts.
+- Override workflow approval policy.
+
+Skills are advisory and preparatory. Workflow execution remains deterministic and approval-gated.
+
+## 28. Recommended Tech Stack
 
 ### 27.1 Application Layer
 
@@ -1590,13 +1791,14 @@ MVP platform is acceptable when:
 - Docker-based runtime.
 - Vercel/Fly.io/AWS/Azure depending on client requirements.
 
-### 27.2 Agent Layer
+### 27.2 Agent and Workflow Layer
 
-- NVIDIA NeMo Agent Toolkit.
-- NeMo Guardrails.
-- NemoClaw/OpenShell reference architecture where useful.
-- MCP-compatible tool connectors.
+- Deterministic workflow state machine as v1 backbone.
+- LangGraph for scoped task graphs.
+- NeMo Guardrails for input/output/topical/dialog/policy rails.
+- MCP-compatible tool connectors only where useful.
 - Human-in-the-loop approval engine.
+- NemoClaw/OpenShell reserved for internal R&D, advanced sandboxing, or later premium deployments.
 
 ### 27.3 Observability
 
