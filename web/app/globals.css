@@ -79,6 +79,12 @@
   body.demo-mode > footer { display: none !important; }
   body.demo-mode > main { padding: 0 !important; }
 
+  /* Operator dashboard hides global site chrome via body class set by /operator layout */
+  body.operator-mode > header,
+  body.operator-mode > footer { display: none !important; }
+  body.operator-mode > main { padding: 0 !important; }
+  body.operator-mode { font-size: 14px; line-height: 1.5; }
+
   /* Demo: typed-text caret + step transition */
   @keyframes demo-caret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
   .demo-caret::after {
