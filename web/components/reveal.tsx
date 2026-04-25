@@ -7,7 +7,7 @@ type RevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: "div" | "section" | "article" | "header" | "footer" | "li" | "ul" | "span";
+  as?: "div" | "section" | "article" | "header" | "footer" | "li" | "ul" | "ol" | "span" | "main" | "aside" | "nav";
   once?: boolean;
   threshold?: number;
 };
