@@ -30,6 +30,27 @@ const DEMOS = [
     teaser:
       "23 unread emails. Agent triages overnight, drafts replies for the priority items, batches the noise for the morning digest.",
   },
+  {
+    href: "/demo/sop-knowledge",
+    slug: "SOP knowledge",
+    sub: "Mining services",
+    teaser:
+      "Site supervisor asks for the LOTO procedure on Slack. Agent retrieves with citation, flags an outdated standard, queues a refresh.",
+  },
+  {
+    href: "/demo/reporting",
+    slug: "Weekly reporting",
+    sub: "Owner briefing",
+    teaser:
+      "Friday 5pm. Agent compiles the weekly briefing from Xero, ServiceM8 and Slack. Pipeline, cash, jobs at risk, decisions for you.",
+  },
+  {
+    href: "/demo/maintenance-request",
+    slug: "Maintenance request",
+    sub: "Property management",
+    teaser:
+      "Tenant reports a hot water leak at 8:47pm. Agent classifies, recommends a vendor, drafts brief and acknowledgement together.",
+  },
 ];
 
 export default function DemoIndexPage() {
@@ -66,10 +87,10 @@ export default function DemoIndexPage() {
 
       <main className="mx-auto w-full max-w-[1100px] px-5 py-16 md:py-24">
         <p className="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-[var(--color-muted)]">
-          Three workflow prototypes
+          Six workflow prototypes
         </p>
         <h1 className="mt-5 max-w-[28ch] font-sans font-medium tracking-[-0.02em] text-[clamp(2rem,4.5vw,3rem)] leading-[1.05] text-[var(--color-ink)]">
-          Three workflows. Same shape.
+          Six workflows. Same shape.
         </h1>
         <p className="mt-6 max-w-[60ch] font-serif text-[1.0625rem] leading-[1.55] text-[var(--color-muted)]">
           Trigger &rarr; extract &rarr; draft &rarr; approve. The approval card is the product. Each
