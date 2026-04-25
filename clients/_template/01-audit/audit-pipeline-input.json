@@ -1,0 +1,80 @@
+{
+  "_comment": "Skeleton input for aao-audit-pipeline. The operator copies the cleaned discovery call notes, the returned onboarding form (as structured object) and the systems inventory (as array of rows) into this file, then invokes the orchestrator skill with this file's contents. All placeholder values use the {{placeholder}} convention so a missing field is obvious.",
+  "schema_version": "1.0",
+  "client_metadata": {
+    "name": "{{client_trading_name}}",
+    "legal_entity": "{{client_legal_entity}}",
+    "abn": "{{XX XXX XXX XXX}}",
+    "industry": "{{industry}}",
+    "audit_date": "{{YYYY-MM-DD}}",
+    "audit_lead": "{{operator_name}}",
+    "contact_email": "{{primary_decision_maker_email}}",
+    "contact_name": "{{primary_decision_maker_name}}"
+  },
+  "discovery_transcript": "{{paste cleaned notes from 00-intake/discovery-call-notes.md here, or the recording transcript if available}}",
+  "onboarding_form": {
+    "business_profile": {
+      "headcount_fte": 0,
+      "headcount_contractors": 0,
+      "year_founded": 0,
+      "trading_address": "{{address}}",
+      "website": "{{url}}"
+    },
+    "team": {
+      "decision_maker": { "name": "", "role": "", "email": "", "mobile": "" },
+      "technical_contact": { "name": "", "role": "", "email": "", "mobile": "" },
+      "ai_champion": { "name": "", "role": "" }
+    },
+    "workflows_of_interest": [
+      {
+        "rank": 1,
+        "name": "{{workflow name}}",
+        "current_owner": "{{role}}",
+        "frequency": "{{daily/weekly/monthly}}",
+        "hours_per_week": 0,
+        "friction_description": "{{what is annoying today}}"
+      }
+    ],
+    "data_categories": [
+      "{{e.g. customer_pii}}",
+      "{{e.g. financial_invoicing}}"
+    ],
+    "compliance_context": {
+      "regimes": ["{{e.g. Privacy Act 1988}}"],
+      "industry_codes": [],
+      "prior_breaches": "{{none / describe}}",
+      "cyber_insurance": { "in_place": false, "insurer": "", "limit_aud": 0 },
+      "existing_ai_policy": false
+    },
+    "approval_preferences": [
+      {
+        "action_class": "{{e.g. send quote over $5k}}",
+        "approver_role": "{{role}}",
+        "device": "{{mobile/desktop}}",
+        "sla_target": "{{e.g. 2h business}}",
+        "escalation": "{{role}}"
+      }
+    ],
+    "risk_appetite_self_rated": 0,
+    "risk_appetite_comment": ""
+  },
+  "systems_inventory": [
+    {
+      "name": "{{system name}}",
+      "provider": "{{provider}}",
+      "plan_tier": "{{plan}}",
+      "primary_owner": "{{role}}",
+      "oauth_scopes_available": ["{{scope}}"],
+      "current_integrations": ["{{integration}}"],
+      "sensitive_data": false,
+      "notes": ""
+    }
+  ],
+  "commercial_context": {
+    "current_admin_cost_aud_per_month": 0,
+    "owner_hours_per_week": 0,
+    "loaded_hourly_rate_aud": 0,
+    "currency": "AUD",
+    "gst_registered": true
+  }
+}

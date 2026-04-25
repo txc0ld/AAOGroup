@@ -1,0 +1,15 @@
+{
+  "_comment": "Placeholder. The operator captures the full JSON output of aao-audit-pipeline here for archival and so the report can be re-rendered later if needed. Do not edit by hand - re-run the skill instead.",
+  "schema_version": null,
+  "generated_at": null,
+  "client_metadata": null,
+  "client_profile": null,
+  "workflow_discovery": null,
+  "data_sensitivity": null,
+  "integration_plan": null,
+  "opportunity_scoring": null,
+  "approval_policy": null,
+  "guardrail_spec": null,
+  "pilot_proposal": null,
+  "pipeline_warnings": []
+}
