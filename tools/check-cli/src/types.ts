@@ -74,7 +74,12 @@ export interface WebsiteResult {
 export interface PageSpeedResult {
   available: boolean;
   note?: string;
-  performance?: number; // 0–1 score from Lighthouse
+  performance?: number; // median MOBILE score 0–1 from Lighthouse (lab)
+  performanceDesktop?: number; // desktop score 0–1 (lab)
+  lcpMobileSeconds?: number; // mobile Largest Contentful Paint, seconds
+  mobileRuns?: number[]; // individual mobile scores (0–1), for transparency on variance
+  hasFieldData?: boolean; // true if real-user CrUX field data exists for this origin
+  methodNote?: string; // plain-English note on how the number was derived (lab vs field, runs)
 }
 
 // ---------------------------------------------------------------------------

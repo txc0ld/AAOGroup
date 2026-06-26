@@ -101,11 +101,12 @@ const SYSTEM_PROMPT = `You are producing a structured JSON report for a "Free AI
 
 Brand voice: blunt, plain-English Perth local-business-owner tone. en-AU spelling. No em-dashes. No marketing hype. Short sentences. State facts, name specifics.
 
-Four non-negotiable rules:
+Five non-negotiable rules:
 1. NEVER FABRICATE — use ONLY the data supplied in the user message. If something wasn't gathered (available: false), note it was not checked automatically. Do not invent competitor names, review counts, or scores.
 2. DATED SNAPSHOT — frame content as a point-in-time snapshot. AI results move around; the underlying issues are more stable.
 3. HONESTY — if the business looks great on a dimension, set rating "G" and say so. Do not invent problems to create urgency. Only flag real issues from the data.
-4. JSON ONLY — return ONLY valid JSON matching the schema. No prose before or after. No markdown code fences. No comments. The response must start with { and end with }.`;
+4. JSON ONLY — return ONLY valid JSON matching the schema. No prose before or after. No markdown code fences. No comments. The response must start with { and end with }.
+5. ENGINE & METRIC LABELS — engine results come from official APIs (Perplexity, OpenAI, Google), which can differ from the consumer ChatGPT app and Google AI Overviews. Do NOT claim presence "in ChatGPT" as the consumer experience; attribute results to the named API (e.g. "the OpenAI API named you") and treat consumer-app/AI-Overview presence as still needing a manual spot-check. For PageSpeed, use the supplied methodNote and frame any score as a Lighthouse lab estimate, never a guaranteed real-user result.`;
 
 function buildUserPrompt(
   input: CheckInput,
@@ -230,6 +231,18 @@ function parseReportJson(raw: string, fallbackHeadline?: string): ReportData {
 // Main export
 // ---------------------------------------------------------------------------
 
+// Human-readable list of the engines that ACTUALLY ran (available: true),
+// using their real labels. Drives the report masthead so it never claims an
+// engine was checked when its key was missing.
+export function enginesLine(data: GatheredData): string {
+  const ran = [data.openai, data.gemini, data.perplexity]
+    .filter((e) => e.available)
+    .map((e) => e.engine);
+  if (ran.length === 0) return "no AI engines (no keys set)";
+  if (ran.length === 1) return ran[0];
+  return `${ran.slice(0, -1).join(", ")} and ${ran[ran.length - 1]}`;
+}
+
 export async function renderReport(
   client: Anthropic,
   input: CheckInput,
@@ -264,7 +277,7 @@ export async function renderReport(
   logReportUsage(usage, ms);
 
   const reportData = parseReportJson(raw, triage.headline);
-  const meta = { business: input.business, suburb: input.suburb, date: today };
+  const meta = { business: input.business, suburb: input.suburb, date: today, engines: enginesLine(data) };
 
   const html = renderReportHtml(reportData, meta);
   const text = renderReportText(reportData, meta);

@@ -37,7 +37,7 @@ import { gatherPlaces } from "./src/gather/places.js";
 import { gatherWebsite } from "./src/gather/website.js";
 import { gatherPageSpeed } from "./src/gather/pagespeed.js";
 import { computeTriage } from "./src/triage.js";
-import { renderReport } from "./src/report.js";
+import { renderReport, enginesLine } from "./src/report.js";
 import { renderReportHtml, renderReportText, minimalReportData } from "./src/report-html.js";
 import { appendLog } from "./src/log.js";
 
@@ -245,8 +245,9 @@ async function cmdRun(opts: {
     const fallbackData = minimalReportData(
       `Claude report skipped (no API key). Engines that ran: ${enginesRan}. Triage: ${triage.headline}`,
     );
-    htmlContent = renderReportHtml(fallbackData, meta);
-    textContent = renderReportText(fallbackData, meta);
+    const fbMeta = { ...meta, engines: enginesLine(data) };
+    htmlContent = renderReportHtml(fallbackData, fbMeta);
+    textContent = renderReportText(fallbackData, fbMeta);
   }
 
   // Write HTML report (primary deliverable).

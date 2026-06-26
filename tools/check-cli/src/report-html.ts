@@ -46,6 +46,7 @@ export interface ReportMeta {
   business: string;
   suburb: string;
   date: string;
+  engines?: string; // human-readable list of engines that actually ran
 }
 
 // ---------------------------------------------------------------------------
@@ -180,6 +181,7 @@ function renderAskedPrompts(prompts: string[]): string {
 
 export function renderReportHtml(data: ReportData, meta: ReportMeta): string {
   const { business, suburb, date } = meta;
+  const engines = meta.engines ?? "ChatGPT, Google AI and Perplexity";
 
   const scorecardRows   = renderScorecardRows(data.scorecard);
   const fixCards        = data.fixes.map((f, i) => renderFixCard(f, i)).join("");
@@ -225,7 +227,7 @@ export function renderReportHtml(data: ReportData, meta: ReportMeta): string {
               <!-- Title block -->
               <div style="padding:24px 28px 20px;">
                 <div style="font-size:26px;font-weight:800;color:#15140f;line-height:1.2;letter-spacing:-0.02em;">${esc(business)}</div>
-                <div style="font-size:13px;color:#6b6a63;margin-top:6px;">${esc(suburb)} &middot; Checked ${esc(date)} across ChatGPT, Google AI and Perplexity</div>
+                <div style="font-size:13px;color:#6b6a63;margin-top:6px;">${esc(suburb)} &middot; Checked ${esc(date)} across ${esc(engines)}</div>
               </div>
 
               <!-- Short version callout -->
@@ -321,6 +323,7 @@ export function renderReportHtml(data: ReportData, meta: ReportMeta): string {
 
 export function renderReportText(data: ReportData, meta: ReportMeta): string {
   const { business, suburb, date } = meta;
+  const engines = meta.engines ?? "ChatGPT, Google AI and Perplexity";
 
   const ragLabel = (r: Rag) => r === "R" ? "Needs work" : r === "A" ? "Some gaps" : "Good";
 
@@ -342,7 +345,7 @@ export function renderReportText(data: ReportData, meta: ReportMeta): string {
 
   return [
     `AI Visibility Check — ${business}, ${suburb}`,
-    `Checked ${date} across ChatGPT, Google AI and Perplexity`,
+    `Checked ${date} across ${engines}`,
     "",
     "---",
     "",

@@ -17,7 +17,7 @@ interface ResponseOutput {
 export async function gatherOpenAI(prompts: string[]): Promise<EngineResult> {
   if (!ENV.openai) {
     return {
-      engine: "ChatGPT (web search)",
+      engine: "ChatGPT (OpenAI API)",
       available: false,
       note: "OPENAI_API_KEY not set",
       answers: [],
@@ -79,7 +79,7 @@ export async function gatherOpenAI(prompts: string[]): Promise<EngineResult> {
     }),
   );
 
-  const engine = "ChatGPT (web search)";
+  const engine = "ChatGPT (OpenAI API)";
   const allFailed = answers.every(
     (a) => a.text === "(no response)" || a.text.startsWith("(error:"),
   );
