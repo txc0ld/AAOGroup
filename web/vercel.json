@@ -2,5 +2,25 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
   "framework": "nextjs",
-  "regions": ["syd1"]
+  "regions": ["syd1"],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept"
+        }
+      ]
+    },
+    {
+      "source": "/articles/(.*)",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept"
+        }
+      ]
+    }
+  ]
 }
