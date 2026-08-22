@@ -1,0 +1,90 @@
+# Your next customer won't scroll Google. They'll ask AI who to call.
+
+> How AI is changing the way people find local businesses in Perth, and the 3 things to fix this week so you're the one it recommends.
+
+By Taylor · Published 2026-06-18 · Updated 2026-06-24
+Source: https://operateai.com.au/articles/your-next-customer-wont-scroll-google/
+Publisher: OperateAI — AI search visibility for Perth local service businesses
+
+## Key takeaways
+
+- AI now names just two or three businesses. You need to be one of them.
+- Your Google Business Profile is the biggest lever. Finish it properly.
+- Put your services, prices and area in plain text, not inside images.
+- Get recent reviews, reply to them, and answer fast.
+
+---
+How AI is changing the way people find local businesses in Perth, and the 3 things to fix on your business this week so you're the one it recommends.
+
+Five years ago, a homeowner in Subiaco with a burst pipe did one thing: typed "emergency plumber near me" into Google, scrolled the top few, and rang whoever looked legit.
+
+A growing number of them now do something different. They open ChatGPT, or read Google's AI answer at the top of the page, or ask the assistant on their phone: "Who's a good emergency plumber in Perth who can come today?" And the AI doesn't hand them ten options to scroll. It picks two or three and gives them the names.
+
+If your business isn't one of those two or three, you don't exist for that customer. There's no page two. There's no scrolling past the ads. The AI already made the shortlist, and you weren't on it.
+
+
+It's a plumber in that example, but the same thing is happening to every kind of local business now: the electrician, the dentist, the physio, the salon, the property manager, the café. People ask AI who's good, and it answers with a short list. This isn't five years away. It's happening right now, quietly, and most local businesses haven't noticed because nobody rings to tell you that an AI skipped you.
+
+## Why this hits local businesses harder than most
+
+Your business lives and dies on local discovery: Google, Maps, word of mouth. That's exactly the part AI is eating first. AI-driven search has grown several times over in the past year, Google now puts an AI answer above the normal results on a huge share of searches, and millions of people a day are asking AI assistants for recommendations instead of comparing listings themselves.
+
+Here's the part that matters: this is different from old-school SEO. SEO got you onto a list and let the customer choose. AI doesn't show a list. It makes the choice. Being findable isn't enough anymore. You have to be the one the AI is confident enough to recommend by name.
+
+## Why the AI picks who it picks
+
+It's not magic, and it's not random. The AI builds its recommendation from a small handful of sources, and it trusts whatever is clearest, most complete, and most consistent: your Google Business Profile, your Maps listing, your reviews, and the plain text on your website.
+
+If your information is messy, missing, or locked inside images and PDFs, the AI literally can't read it. So it does the safe thing. It skips you and recommends the competitor whose details are clean. You can be the better business and still lose the customer because the other one's profile was easier to read.
+
+> You can be the better business and still lose the customer, just because your profile was harder to read.
+
+That's the good news, actually. It means this is fixable, and most of your competition hasn't fixed it.
+
+## The 3 things to fix this week
+
+### 1. Make your Google Business Profile machine-perfect
+
+This is the single biggest lever, and most businesses half-finish it. The AI leans on your Google Business Profile harder than anything else you own. Do this properly:
+
+- List every service as its own line. Not one vague "plumbing" or "services" entry, but each thing you actually do, spelled out. A plumber lists hot water replacement, blocked drains, burst pipe repair, gas fitting, leak detection. A clinic lists each treatment. A salon lists each service. Whatever you do, name it.
+- Set your exact service area: the suburbs you actually cover, not just "Perth."
+- Choose the right primary and secondary categories.
+- Fill in your real hours, including "open 24 hours" if you do emergency callouts.
+- Answer the Q&A section yourself before a random customer answers it wrong for you.
+- Add real photos of real work, not stock images.
+
+A complete, accurate profile is what gives an AI the confidence to put your name forward instead of someone else's.
+
+
+### 2. Put your services, prices, and area in plain text, not in pictures
+
+AI can't read a price inside a JPG flyer or a PDF rate card. If your website says "Call for a quote" and nothing else, you've given the AI nothing to recommend you on.
+
+Add a plain-text services page that says, in actual words: what you do, where you do it, and a "starting from" price or callout fee wherever you can put one. "Same-day blocked drains across the northern suburbs, callout from $X." That one sentence is something an AI can pick up and use. The flashy image that says the same thing is invisible to it.
+
+### 3. Get reviews: plenty, recent, and replied to
+
+When an AI is deciding between two businesses, reviews are one of the heaviest things on the scale. And it's not just the star rating. It's the number, how recent they are, and whether you reply.
+
+A business with 80 reviews, the newest from last week, and the owner replying to each one reads as alive and trustworthy. One with 12 reviews from 2022 reads as closed down. Ask every happy customer on the day, make it one tap, and reply to every review, the good ones and the bad ones.
+
+
+## The one that's about to matter most: speed
+
+Here's where all this is heading. Right now, AI recommends you. Over the next year or three, it's going to start booking you, checking your availability, requesting a quote, even paying a deposit, on the customer's behalf. That future is real, but it's not tomorrow, so don't let anyone sell you a panic about robots taking over your diary next week.
+
+What you should take from it is this: the businesses that win those customers will be the ones that answer fast and are easy to book. If a lead lands and you take three days to call back, the AI learns to stop sending them to you. Speed is quietly becoming the whole game. Catching your missed calls and replying within minutes isn't just good service anymore. It's how you stay on the AI's shortlist.
+
+
+And the work to get ready for that future is the exact same work that wins you more customers today. That's the whole point. Fix the fundamentals now and you're sorted for both.
+
+## The bottom line
+
+The businesses that get skipped over the next few years won't be the ones doing bad work. They'll be the ones the AI couldn't read.
+
+Clean Google profile. Clear, plain-text info. Strong, recent reviews. Fast response. That's it. Do those four things and you're the one it recommends, to the customer with the burst pipe at 9pm, or the toothache, or the last-minute booking, who isn't scrolling Google anymore, just asking AI who to call.
+
+At OperateAI we help Perth local service businesses get found, recommended, and set up to be booked, sorted properly for how customers search now and how AI is about to book them next. If you want yours done without losing your weekends to it, [get your free AI Visibility Check](https://operateai.com.au/check/).
+
+**P.S.** Want to know how you currently look to AI? [Send us your business name and suburb](https://operateai.com.au/check/) and we'll send back a free 5-minute rundown of what ChatGPT and Google's AI actually say about you right now, and the one thing costing you customers.

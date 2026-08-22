@@ -14,6 +14,16 @@ export function buildOrganization(): SchemaNode {
     taxID: BUSINESS.abn,
     description: BUSINESS.description,
     foundingDate: BUSINESS.founded,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: BUSINESS.email,
+        ...(BUSINESS.telephone ? { telephone: BUSINESS.telephone } : {}),
+        areaServed: "AU",
+        availableLanguage: "en",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       addressLocality: BUSINESS.address.addressLocality,

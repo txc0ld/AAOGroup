@@ -41,7 +41,9 @@ export function Faq({ items, title = "Common questions", tone = "paper", emitSch
                   : "text-[var(--color-fg)] hover:text-[color-mix(in_oklab,var(--color-fg)_80%,var(--color-signal))]",
               ].join(" ")}
             >
-              <span>{item.question}</span>
+              {/* Real heading so agents and screen readers see the question in the outline;
+                  preflight makes h3 inherit the summary's font styles. */}
+              <h3>{item.question}</h3>
               {/* Plus/minus icon — lime when open */}
               <span
                 aria-hidden

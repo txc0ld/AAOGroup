@@ -37,7 +37,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: meta.title,
     description: meta.description,
-    alternates: { canonical: `/articles/${slug}/` },
+    alternates: {
+      canonical: `/articles/${slug}/`,
+      // Agent-readable Markdown twin (generated into /public/articles by
+      // scripts/gen-article-loaders.mjs). Lets AI crawlers fetch clean text.
+      types: { "text/markdown": `/articles/${slug}.md` },
+    },
     openGraph: { type: "article", title: meta.title, description: meta.description },
   };
 }
@@ -111,6 +116,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <article className="mt-10">
           <Content />
         </article>
+
+        <p className="mt-10 text-[13px] text-[var(--color-ink-soft)]">
+          <a
+            href={`/articles/${slug}.md`}
+            className="font-semibold underline decoration-[var(--color-line-ink)] underline-offset-4 transition-colors hover:text-[var(--color-ink)]"
+          >
+            Read this as plain Markdown
+          </a>{" "}
+          — a clean copy for AI agents and crawlers.
+        </p>
 
         <div className="mt-14 overflow-hidden rounded-3xl border border-[color-mix(in_oklab,var(--color-signal)_45%,var(--color-line-ink))] bg-white p-8 text-center shadow-[0_30px_60px_-36px_rgba(18,18,18,0.5)] lg:p-12">
           <h2 className="mx-auto max-w-[22ch] text-[clamp(1.6rem,3vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.025em] text-[var(--color-ink)]">

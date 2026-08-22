@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { TheShift } from "@/components/home/the-shift";
 import { WhyTradies } from "@/components/home/why-tradies";
@@ -12,6 +13,10 @@ import { Faq } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { buildLocalBusiness, buildWebPage, wrapGraph } from "@/lib/schema";
 import { BUSINESS } from "@/lib/business";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (

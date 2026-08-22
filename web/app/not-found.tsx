@@ -21,6 +21,43 @@ export default function NotFound() {
             Back to home →
           </Link>
         </div>
+        <nav aria-label="Where to look next" className="mt-14 border-t border-[var(--color-border)] pt-8">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--color-fg-variant)]">
+            Where to look next
+          </p>
+          <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] text-[var(--color-fg-variant)]">
+            <li>
+              <Link href="/articles/" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                Articles
+              </Link>
+            </li>
+            <li>
+              <Link href="/how-it-works/" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                How it works
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact/" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <a href="/sitemap.xml" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                Site map
+              </a>
+            </li>
+            <li>
+              <a href="/llms.txt" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                llms.txt
+              </a>
+            </li>
+            <li>
+              <a href="/articles/index.md" className="underline underline-offset-4 transition-colors hover:text-[var(--color-fg)]">
+                Articles (Markdown)
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </section>
   );
